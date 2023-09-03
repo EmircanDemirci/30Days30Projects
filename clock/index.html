@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/index.css" rel="stylesheet"/>
+    <title>ClockApp</title>
+</head>
+<body>
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand min-hand"></div>
+            <div class="hand second-hand"></div>
+        </div>
+    </div>
+
+
+    <script>
+        function setHour(){
+            const now = new Date();
+            const seconds = now.getSeconds();
+            const hours = now.getHours();
+            const min = now.getMinutes();
+            const degreeForSeconds = ((seconds/60)*360)+90;
+            const degreeForHours = ((hours/12)*360) +90;
+            const degreeForMins = ((min/60)*360)+90;
+
+            console.log(seconds);
+            const secondHand = document.querySelector(".second-hand");
+            const hourHand = document.querySelector(".hour-hand");
+            const minHand = document.querySelector(".min-hand");
+            secondHand.style.transform = `rotate(${degreeForSeconds}deg)`;
+            hourHand.style.transform = `rotate(${degreeForHours}deg)`;
+            minHand.style.transform = `rotate(${degreeForMins}deg)`;
+        }   
+        setInterval(setHour,1000);
+        setHour()
+    </script>
+</body>
+</html>
